@@ -22,7 +22,7 @@ Este es el bloque actual, el cual es restado a 1000000 (bloque halving) y así s
 
 ## ¿Cómo se usa el script?
 
-Para utilizar el script abra el archivo "script.js" y copie todo su contenido. Luego abra su navegador e introduzca la siguiente URL para ver el explorador cryptoID "[https://chainz.cryptoid.info/boli/#!overview](https://chainz.cryptoid.info/boli/#!overview)".
+Para utilizar el script abra el archivo ["script.js"](https://github.com/redsnahoj/boli-halving-cryptoid/blob/main/script.js) y copie todo su contenido. Luego abra su navegador e introduzca la siguiente URL para ver el explorador cryptoID "[https://chainz.cryptoid.info/boli/#!overview](https://chainz.cryptoid.info/boli/#!overview)".
 
 Una vez en ella vaya al final de la web y haga click en el siguiente botón hasta que muestre los datos que necesite. Por ejemplo, si quiere un promedio de 30 días, haga click en el botón hasta que le muestre los 30 días:
 
