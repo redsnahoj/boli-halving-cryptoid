@@ -1,27 +1,47 @@
-let getData = prompt('Introduzca el numero de días que quiere que se promedie su operación. Ejemplo 7 días (solo el número):')
-let average = Number(getData);
+const getDataFromUser = () => {
+  return Number(prompt('Introduzca el número de días que quiere que se promedie su operación. Ejemplo: 7 días (solo el número):'));
+};
 
-const HALVING = 1000000;
-const BY = 'By: @redsnahoj';
+const calculateAverage = (data, days) => {
+  let averageResult = 0;
+  for (let i = 1; i <= days; i++) {
+    averageResult += Number(data[i]);
+  }
+  return averageResult / days;
+};
 
-let rowData = [];
-let averageResult = 0;
-let daysRemaining = 0;
+const getRowData = (table, days) => {
+  let rowData = [];
+  for (let i = 1; i <= days; i++) {
+    rowData[i] = table.getElementsByTagName('tr')[i].getElementsByTagName('td')[1].innerHTML;
+  }
+  return rowData;
+};
 
-let dataTable = document.getElementById('overview-table').childNodes[2];
+const getDataBlock = (table) => {
+  return Number(table.getElementsByTagName('tr')[0].getElementsByTagName('td')[2].innerHTML);
+};
 
-for (let i = 1; i <= average; i++) {
-  rowData[i] = dataTable.getElementsByTagName('tr')[i].getElementsByTagName('td')[1].innerHTML;
-  averageResult = averageResult + Number(rowData[i]);
-}
-
-let dataBlock = Number(dataTable.getElementsByTagName('tr')[0].getElementsByTagName('td')[2].innerHTML);
-
-daysRemaining = (HALVING - dataBlock) / (averageResult / average);
-
-let msgResult = `El promedio de bloque diario es de: ${averageResult / average}
+const displayResult = (average, daysRemaining) => {
+  const BY = 'By: @redsnahoj';
+  const msgResult = `El promedio de bloque diario es de: ${average}
 \nY faltan ${daysRemaining.toFixed(2)} días aproximadamente para el Halving
 \n${BY}`;
 
-console.log(msgResult);
-alert(msgResult);
+  console.log(msgResult);
+  alert(msgResult);
+};
+
+const main = () => {
+  const HALVING = 1500000;
+  const averageDays = getDataFromUser();
+  const dataTable = document.getElementById('overview-table').childNodes[2];
+  const rowData = getRowData(dataTable, averageDays);
+  const averageResult = calculateAverage(rowData, averageDays);
+  const dataBlock = getDataBlock(dataTable);
+  const daysRemaining = (HALVING - dataBlock) / averageResult;
+
+  displayResult(averageResult, daysRemaining);
+};
+
+main();
